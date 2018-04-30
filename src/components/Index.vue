@@ -26,9 +26,14 @@ export default {
   },
   methods: {
     deleteShake(id) {
-      this.shakes = this.shakes.filter(shake => {
-        return shake.id !== id
-      })
+      // delete doc from firestore
+      db.collection('shakes').doc(id).delete()
+        .then(() => {
+          this.shakes = this.shakes.filter(shake => {
+            return shake.id !== id
+          })
+        })
+      
     }
   },
   created() {
