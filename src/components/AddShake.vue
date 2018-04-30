@@ -23,6 +23,9 @@
 </template>
 
 <script>
+import db from '@/firebase/init'
+import slugify from 'slugify'
+
 export default {
   name: 'AddShake',
   data() {
@@ -30,12 +33,32 @@ export default {
       title: null,
       another: null,
       ingredients: [],
-      feedback: null
+      feedback: null,
+      slug: null
     }
   },
   methods: {
     AddShake() {
-      console.log(this.title, this.ingredients)
+      if(this.title) {
+        this.feedback = null
+        // create a slug
+        this.slug = slugify(this.title, {
+          replacement: '-',
+          remove: /[$*_+~.()'"!\-:@]/g,
+          lower: true
+        })
+        db.collection('shakes').add({
+          title: this.title,
+          ingredients: this.ingredients,
+          slug: this.slug
+        }).then(() => {
+          this.$router.push({ name: 'Index' })
+        }).catch(e => {
+          console.log(e)
+        })
+      } else {
+        this.feedback = 'You must enter samurai-shake title'
+      }
     },
 
     addIng() {
