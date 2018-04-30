@@ -2,11 +2,11 @@
   <div class="navbar">
     <nav class=" nav-extended amber darken-2">
       <div class="nav-content">
-        <router-link to="">
+        <router-link :to="{ name: 'Index' }">
           <span class="nav-title">Samurai Shakes</span>
         </router-link>
         <a class="btn-floating btn-large halfway-fab blue-grey darken-4">
-          <router-link to="">
+          <router-link :to="{ name: 'AddShake' }">
             <i class="material-icons">add</i>
           </router-link>
         </a>
