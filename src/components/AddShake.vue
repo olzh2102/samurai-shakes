@@ -61,7 +61,6 @@ export default {
         this.feedback = 'You must enter samurai-shake title'
       }
     },
-
     addIng() {
       if(this.another) {
         this.ingredients.push(this.another)
