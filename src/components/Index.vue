@@ -10,6 +10,11 @@
           </li>
         </ul>
       </div>
+      <span class="btn-floating btn-large halfway-fab amber darken-2">
+        <router-link :to="{ name: 'EditShake', params: { shake_slug: shake.slug } }">
+          <i class="material-icons edit">edit</i>
+        </router-link>
+      </span>
     </div>
   </div>
 </template>
